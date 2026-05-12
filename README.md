@@ -1,15 +1,19 @@
 # Odoo CRM Airsync for DevRev
 
-A DevRev **Airdrop (ADaaS)** snap-in that performs a **one-way sync** from **Odoo CRM into DevRev**. It imports Companies, Contacts, and Opportunities from Odoo and maps them to the corresponding DevRev objects: Accounts, Rev Users, and Opportunities.
+A DevRev **Airdrop (ADaaS)** snap-in that syncs CRM data between **Odoo** and **DevRev**.
+
+- **Accounts** and **Contacts** are synced **one-way** (Odoo → DevRev).
+- **Opportunities** are synced **bi-directionally** (Odoo ↔ DevRev).
 
 ---
 
 ## Overview
 
-| Direction | Supported |
-|-----------|-----------|
-| Odoo → DevRev | Yes |
-| DevRev → Odoo | No |
+| Object | Odoo → DevRev | DevRev → Odoo |
+|--------|:---:|:---:|
+| Accounts (Companies) | Yes | No |
+| Contacts | Yes | No |
+| Opportunities | Yes | Yes |
 
 This snap-in uses the DevRev **Airdrop** framework (`@devrev/ts-adaas`) and communicates with Odoo via its JSON-RPC 2.0 API using API key authentication.
 
@@ -17,7 +21,7 @@ This snap-in uses the DevRev **Airdrop** framework (`@devrev/ts-adaas`) and comm
 
 ## Synced Objects
 
-### Accounts (Odoo: `res.partner` where `is_company = true`)
+### Accounts (Odoo: `res.partner` where `is_company = true`) — Odoo → DevRev only
 
 | Odoo Field | DevRev Field | Notes |
 |---|---|---|
@@ -31,7 +35,7 @@ This snap-in uses the DevRev **Airdrop** framework (`@devrev/ts-adaas`) and comm
 
 ---
 
-### Contacts (Odoo: `res.partner` where `is_company = false`)
+### Contacts (Odoo: `res.partner` where `is_company = false`) — Odoo → DevRev only
 
 | Odoo Field | DevRev Field | Notes |
 |---|---|---|
@@ -43,7 +47,7 @@ Contacts are mapped to DevRev `rev_user` objects.
 
 ---
 
-### Opportunities (Odoo: `crm.lead` where `type = opportunity`)
+### Opportunities (Odoo: `crm.lead` where `type = opportunity`) — bidirectional
 
 | Odoo Field | DevRev Field | Notes |
 |---|---|---|
