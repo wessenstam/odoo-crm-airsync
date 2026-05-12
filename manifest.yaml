@@ -60,7 +60,7 @@ keyring_types:
         method: "GET"
 
 imports:
-  - slug: airdrop-odoo-crm
+  - slug: airdrop-odoo-crm-v2
     display_name: odoo-cursor
     description: |
       Import CRM data from Odoo into DevRev.
