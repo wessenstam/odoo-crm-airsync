@@ -1,0 +1,72 @@
+version: "2"
+
+name: odoo-cursor
+description: |
+  Bi-directional CRM sync between Odoo and DevRev.
+
+  Syncs: Accounts (Companies), Contacts, and Opportunities from Odoo CRM
+  to DevRev accounts, rev_users, and opportunities.
+
+  Supports incremental sync using Odoo's write_date field.
+  Requires an Odoo instance with CRM module installed.
+
+service_account:
+  display_name: Odoo Cursor Bot
+  scopes:
+    self:
+      - scope: sync_mapper_record:write
+        optional: false
+        reason: "Allow write access to sync mapper records"
+      - scope: sync_mapper_record:read
+        optional: false
+        reason: "Allow read access to sync mapper records"
+      - scope: sync_unit:read
+        optional: false
+        reason: "Allow read access to sync units"
+      - scope: sync_snap_in:all
+        optional: false
+        reason: "Allow all access to sync snap ins"
+
+functions:
+  - name: extraction
+    description: Airdrop extraction function for Odoo CRM (accounts, contacts, opportunities)
+
+keyring_types:
+  - id: odoo-api-key
+    name: Odoo CRM Connection
+    description: |
+      API key connection for Odoo CRM.
+
+      Setup:
+      1. Log in to your Odoo instance
+      2. Go to Settings → Users → Your User → Preferences
+      3. Under Account Security, create a New API Key
+      4. In the "Odoo URL" field below enter your full Odoo instance URL
+         (e.g. https://mycompany.odoo.com)
+      5. Enter the generated API key in the API Key field
+
+      The connector syncs Accounts, Contacts, and Opportunities from the CRM module.
+    external_system_name: Odoo CRM
+    kind: "Secret"
+    is_subdomain: true
+    secret_config:
+      secret_transform: '.api_key'
+      fields:
+        - id: api_key
+          name: API Key
+          description: Odoo API key from user Preferences → Account Security → New API Key
+      token_verification:
+        url: "https://app.devrev.ai/favicon.ico"
+        method: "GET"
+
+imports:
+  - slug: airdrop-odoo-crm
+    display_name: odoo-cursor
+    description: |
+      Import CRM data from Odoo into DevRev.
+
+      Syncs Accounts (companies), Contacts (persons), and Opportunities.
+      Supports incremental sync using Odoo write_date timestamps.
+    extractor_function: extraction
+    allowed_connection_types:
+      - odoo-api-key

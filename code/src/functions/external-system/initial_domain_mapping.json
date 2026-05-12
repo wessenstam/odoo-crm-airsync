@@ -1,0 +1,229 @@
+{
+  "additional_mappings": {
+    "format_version": "v0.2.0",
+    "devrev_metadata_version": 13,
+    "record_type_mappings": {
+      "accounts": {
+        "default_mapping": {
+          "object_category": "stock",
+          "object_type": "account"
+        },
+        "possible_record_type_mappings": [
+          {
+            "devrev_leaf_type": "account",
+            "forward": true,
+            "reverse": false,
+            "shard": {
+              "constructed_custom_fields": {},
+              "devrev_leaf_type": {
+                "object_category": "stock",
+                "object_type": "account"
+              },
+              "mode": "create_shard",
+              "stock_field_mappings": {
+                "display_name": {
+                  "fallback": {
+                    "type": "text",
+                    "value": "Unknown Account"
+                  },
+                  "forward": true,
+                  "primary_external_field": "name",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "description": {
+                  "forward": true,
+                  "primary_external_field": "description",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "state": {
+                  "fallback": {
+                    "type": "enum",
+                    "value": "ACTIVE"
+                  },
+                  "forward": true,
+                  "primary_external_field": "state",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "owned_by": {
+                  "forward": true,
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "is_array": true,
+                    "leaf_type": {
+                      "object_category": "stock",
+                      "object_type": "devu"
+                    },
+                    "transformation_method": "use_devrev_record"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "contacts": {
+        "default_mapping": {
+          "object_category": "stock",
+          "object_type": "rev_user"
+        },
+        "possible_record_type_mappings": [
+          {
+            "devrev_leaf_type": "rev_user",
+            "forward": true,
+            "reverse": false,
+            "shard": {
+              "constructed_custom_fields": {},
+              "devrev_leaf_type": {
+                "object_category": "stock",
+                "object_type": "rev_user"
+              },
+              "mode": "create_shard",
+              "stock_field_mappings": {
+                "display_name": {
+                  "fallback": {
+                    "type": "text",
+                    "value": "Unknown Contact"
+                  },
+                  "forward": true,
+                  "primary_external_field": "name",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "email": {
+                  "forward": true,
+                  "primary_external_field": "email",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "opportunities": {
+        "default_mapping": {
+          "object_category": "stock",
+          "object_type": "opportunity"
+        },
+        "possible_record_type_mappings": [
+          {
+            "devrev_leaf_type": "opportunity",
+            "forward": true,
+            "reverse": false,
+            "shard": {
+              "constructed_custom_fields": {},
+              "devrev_leaf_type": {
+                "object_category": "stock",
+                "object_type": "opportunity"
+              },
+              "mode": "create_shard",
+              "stock_field_mappings": {
+                "title": {
+                  "fallback": {
+                    "type": "text",
+                    "value": "Untitled Opportunity"
+                  },
+                  "forward": true,
+                  "primary_external_field": "name",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "body": {
+                  "forward": true,
+                  "primary_external_field": "description",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "amount": {
+                  "forward": true,
+                  "primary_external_field": "expected_revenue",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "stage": {
+                  "fallback": {
+                    "type": "enum",
+                    "value": "qualification"
+                  },
+                  "forward": true,
+                  "primary_external_field": "stage",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "priority": {
+                  "fallback": {
+                    "type": "enum",
+                    "value": "P2"
+                  },
+                  "forward": true,
+                  "primary_external_field": "priority",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "forecast_category": {
+                  "fallback": {
+                    "type": "enum",
+                    "value": "pipeline"
+                  },
+                  "forward": true,
+                  "primary_external_field": "forecast_category",
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "transformation_method": "use_directly"
+                  }
+                },
+                "owned_by_ids": {
+                  "forward": true,
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "is_array": true,
+                    "leaf_type": {
+                      "object_category": "stock",
+                      "object_type": "devu"
+                    },
+                    "transformation_method": "use_devrev_record"
+                  }
+                },
+                "account_id": {
+                  "forward": true,
+                  "reverse": false,
+                  "transformation_method_for_set": {
+                    "is_array": false,
+                    "leaf_type": {
+                      "object_category": "stock",
+                      "object_type": "account"
+                    },
+                    "transformation_method": "use_devrev_record"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

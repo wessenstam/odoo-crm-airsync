@@ -1,0 +1,41 @@
+{
+  "context": {
+    "secrets": {
+      "service_account_token": ""
+    },
+    "service_account_id": "don:identity:dvrv-eu-1:devo/3hF4oIQz22:svcacc/1",
+    "dev_oid": "don:identity:dvrv-eu-1:devo/3hF4oIQz22",
+    "snap_in_id": "don:integration:dvrv-eu-1:devo/3hF4oIQz22:snap_in/odoo-crm"
+  },
+  "execution_metadata": {
+    "function_name": "extraction",
+    "request_id": "",
+    "devrev_endpoint": "https://api.devrev.ai"
+  },
+  "input_data": {
+    "global_values": {},
+    "event_sources": {},
+    "keyrings": null,
+    "resources": {
+      "keyrings": {},
+      "tags": {}
+    }
+  },
+  "payload": {
+    "connection_data": {
+      "key": "https://webjoin.odoo.com|e7892101b2bfa57bb00a1ee10897de660fc0906e"
+    },
+    "event_context": {
+      "callback_url": "https://api.devrev.ai/internal/airdrop.external-extractor.message",
+      "dev_org_id": "DEV-3hF4oIQz22",
+      "dev_user_id": "DEVU-1",
+      "external_system": "odoo-crm",
+      "external_system_type": "ADaaS",
+      "import_slug": "airdrop-odoo-crm",
+      "mode": "INITIAL",
+      "external_sync_unit_id": "https://webjoin.odoo.com",
+      "worker_data_url": "https://api.devrev.ai/internal/airdrop.external-worker"
+    },
+    "event_type": "EXTRACTION_METADATA_START"
+  }
+}

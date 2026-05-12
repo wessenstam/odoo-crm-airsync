@@ -1,0 +1,130 @@
+{
+  "schema_version": "v0.2.0",
+  "record_types": {
+    "accounts": {
+      "name": "Account",
+      "fields": {
+        "name": {
+          "name": "Name",
+          "is_required": true,
+          "type": "text"
+        },
+        "description": {
+          "name": "Description",
+          "type": "text"
+        },
+        "state": {
+          "name": "State",
+          "type": "enum",
+          "enum": {
+            "values": [
+              { "key": "ACTIVE", "name": "Active" },
+              { "key": "INACTIVE", "name": "Inactive" }
+            ]
+          }
+        },
+        "email": {
+          "name": "Email",
+          "type": "text"
+        },
+        "phone": {
+          "name": "Phone",
+          "type": "text"
+        },
+        "website": {
+          "name": "Website",
+          "type": "text"
+        }
+      }
+    },
+    "contacts": {
+      "name": "Contact",
+      "fields": {
+        "name": {
+          "name": "Name",
+          "is_required": true,
+          "type": "text"
+        },
+        "email": {
+          "name": "Email",
+          "type": "text"
+        },
+        "phone": {
+          "name": "Phone",
+          "type": "text"
+        }
+      }
+    },
+    "opportunities": {
+      "name": "Opportunity",
+      "fields": {
+        "name": {
+          "name": "Name",
+          "is_required": true,
+          "type": "text"
+        },
+        "description": {
+          "name": "Description",
+          "type": "text"
+        },
+        "expected_revenue": {
+          "name": "Expected Revenue",
+          "type": "float"
+        },
+        "probability": {
+          "name": "Probability",
+          "type": "float"
+        },
+        "stage": {
+          "name": "Stage",
+          "type": "enum",
+          "enum": {
+            "values": [
+              { "key": "qualification", "name": "Qualification" },
+              { "key": "validation", "name": "Validation" },
+              { "key": "negotiation", "name": "Negotiation" },
+              { "key": "contract", "name": "Contract" },
+              { "key": "stalled", "name": "Stalled" },
+              { "key": "closed_won", "name": "Closed Won" },
+              { "key": "closed_lost", "name": "Closed Lost" }
+            ]
+          }
+        },
+        "priority": {
+          "name": "Priority",
+          "type": "enum",
+          "enum": {
+            "values": [
+              { "key": "P0", "name": "Critical" },
+              { "key": "P1", "name": "High" },
+              { "key": "P2", "name": "Medium" },
+              { "key": "P3", "name": "Low" }
+            ]
+          }
+        },
+        "forecast_category": {
+          "name": "Forecast Category",
+          "type": "enum",
+          "enum": {
+            "values": [
+              { "key": "pipeline", "name": "Pipeline" },
+              { "key": "best_case", "name": "Best Case" },
+              { "key": "commit", "name": "Commit" },
+              { "key": "closed_won", "name": "Closed Won" },
+              { "key": "omitted", "name": "Omitted" }
+            ]
+          }
+        },
+        "account_id": {
+          "name": "Account",
+          "type": "reference",
+          "reference": {
+            "refers_to": {
+              "#record:accounts": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
