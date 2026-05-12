@@ -232,4 +232,5 @@ npm test
 
 | Version | Notes |
 |---|---|
+| `0.2` | Upgraded `@devrev/ts-adaas` to 1.19.5, `axios` to 1.15.2; added `node_modules` to build archive; trimmed devDependencies |
 | `0.1` | Initial working release — one-way sync of Accounts, Contacts, Opportunities |
