@@ -2,7 +2,7 @@ version: "2"
 
 name: odoo-cursor
 description: |
-  Bi-directional CRM sync between Odoo and DevRev.
+  One-way CRM sync from Odoo into DevRev.
 
   Syncs: Accounts (Companies), Contacts, and Opportunities from Odoo CRM
   to DevRev accounts, rev_users, and opportunities.
